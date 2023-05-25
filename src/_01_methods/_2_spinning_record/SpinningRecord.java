@@ -31,17 +31,17 @@ import processing.core.PImage;
  * 8. Does the record rotate when the mouse is pressed?
  * 
  * 9. Modify your code so the record only spins when the mouse is pressed.
- * 
+ * 0
  * 10.Use the song.play() and song.stop() methods to play a song ONLY when
  *    the record is spinning.
  */
 public class SpinningRecord extends PApplet {
     static final int WIDTH = 600;
     static final int HEIGHT = 600;
-    
+    int recordSpin = 0;
     Song song = new Song("awesomeTrack.mp3");
     PImage pictureOfRecord;
-    
+    int spin = 0;
     @Override
     public void settings() {
         size(WIDTH, HEIGHT);
@@ -49,7 +49,7 @@ public class SpinningRecord extends PApplet {
 
     @Override
     public void setup() {
-        
+    	pictureOfRecord = loadImage("images/record.png");
     }
 
     @Override
