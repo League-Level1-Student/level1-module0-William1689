@@ -1,4 +1,6 @@
-package _01_methods._4_magic_worms.MagicWorms;
+package _01_methods._4_magic_worms;
+
+import java.util.Random;
 
 import processing.core.PApplet;
 
@@ -32,7 +34,9 @@ import processing.core.PApplet;
 public class MagicWorms extends PApplet {
     static final int WIDTH = 600;
     static final int HEIGHT = 400;
-
+    Random ran = new Random();
+    int y = 0;
+	int x =0;
     @Override
     public void settings() {
         size(WIDTH, HEIGHT);
@@ -40,12 +44,22 @@ public class MagicWorms extends PApplet {
 
     @Override
     public void setup() {
-
+    	
+    	background(0,0,0);
     }
 
     @Override
-    public void draw() {
-
+	    public void draw() {
+    	
+    	makeMagical();
+    	//for(int worm = 1; worm<300; worm++) {
+    		 if(mousePressed) {
+    	y = ran.nextInt(501);
+    		 x = ran.nextInt(801);
+    		 fill(255,0,0);
+    		 ellipse(x,y,15,15);
+    		 }
+    	//}
     }
 
     static public void main(String[] args) {
