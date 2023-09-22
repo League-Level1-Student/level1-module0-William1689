@@ -14,26 +14,33 @@ public class FlappyBird extends PApplet {
 	int pipeGap= 150;
 	int lowerY = upperPipeHeight + pipeGap;
 	int pipeWidth= 70;
+	int score  = 0;
+	
 	@Override
 	public void settings() {
 		size(WIDTH, HEIGHT);
 	}
-
+    
 	@Override
 	public void setup() {
+		
+	     
+		
+		
+		
+		
 		teleportPipes();
 	}
 
 	@Override
 	public void draw() {
 		if(intersectsPipes()) {
-			System.out.println("you die");
+			
 			background(0,0,0);
 			textSize(100);
 			text("YOU DIE",WIDTH/2,HEIGHT/2);
 		}else{
 			background(50,100,255);  
-
 			fill(255,255,0);
 			stroke(0,0,0);
 			ellipse(birdX,birdY,40 ,40);
@@ -43,6 +50,10 @@ public class FlappyBird extends PApplet {
 			rect(pipeX,0,70, upperPipeHeight);
 			rect(pipeX,lowerY,70,HEIGHT-pipeGap-upperPipeHeight);
 			pipeX-=5;
+			
+			textSize(40);
+			text(score,20,40);
+			
 			teleportPipes();
 		}
 	}
@@ -56,16 +67,18 @@ public class FlappyBird extends PApplet {
 			pipeX=WIDTH;
 			upperPipeHeight = (int) random(100, 400);
 			lowerY = upperPipeHeight + pipeGap;
+			score+=1;
+			
 
 		}
 
 	}
 	boolean intersectsPipes() { 
 		if (birdY < upperPipeHeight && birdX > pipeX && birdX < (pipeX+pipeWidth)){
-			System.out.println("1");
+			
 			return true; }
 		else if (birdY>lowerY && birdX > pipeX && birdX < (pipeX+pipeWidth)) {
-			System.out.println("2");
+			
 			return true; }
 		else { return false; }
 	}  
